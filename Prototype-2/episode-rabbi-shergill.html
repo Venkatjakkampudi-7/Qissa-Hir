@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Qissa Hir</title>
+	<!-- Meta Tags -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="author" content="Venkatasubbaiah Jakkampudi">
+	<meta name="description" content="Qissa Hir, Hir Ranjha">
+
+	<!-- Dark mode -->
+	<script>
+		const storedTheme = localStorage.getItem('theme')
+ 
+		const getPreferredTheme = () => {
+			if (storedTheme) {
+				return storedTheme
+			}
+			return window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'light'
+		}
+
+		const setTheme = function (theme) {
+			if (theme === 'auto' && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+				document.documentElement.setAttribute('data-bs-theme', 'dark')
+			} else {
+				document.documentElement.setAttribute('data-bs-theme', theme)
+			}
+		}
+
+		setTheme(getPreferredTheme())
+
+		window.addEventListener('DOMContentLoaded', () => {
+		    var el = document.querySelector('.theme-icon-active');
+			if(el != 'undefined' && el != null) {
+				const showActiveTheme = theme => {
+				const activeThemeIcon = document.querySelector('.theme-icon-active use')
+				const btnToActive = document.querySelector(`[data-bs-theme-value="${theme}"]`)
+				const svgOfActiveBtn = btnToActive.querySelector('.mode-switch use').getAttribute('href')
+
+				document.querySelectorAll('[data-bs-theme-value]').forEach(element => {
+					element.classList.remove('active')
+				})
+
+				btnToActive.classList.add('active')
+				activeThemeIcon.setAttribute('href', svgOfActiveBtn)
+			}
+
+			window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
+				if (storedTheme !== 'light' || storedTheme !== 'dark') {
+					setTheme(getPreferredTheme())
+				}
+			})
+
+			showActiveTheme(getPreferredTheme())
+
+			document.querySelectorAll('[data-bs-theme-value]')
+				.forEach(toggle => {
+					toggle.addEventListener('click', () => {
+						const theme = toggle.getAttribute('data-bs-theme-value')
+						localStorage.setItem('theme', theme)
+						setTheme(theme)
+						showActiveTheme(theme)
+					})
+				})
+
+			}
+		})
+		
+	</script>
+
+	<!-- Favicon -->
+	<link rel="shortcut icon" href="assets/images/favicon.ico">
+
+	<!-- Google Font -->
+	<link rel="preconnect" href="https://fonts.gstatic.com/">
+	<link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;700&amp;family=Rubik:wght@400;500;700&amp;display=swap" rel="stylesheet">
+
+	<!-- Plugins CSS -->
+	<link rel="stylesheet" type="text/css" href="assets/vendor/font-awesome/css/all.min.css">
+	<link rel="stylesheet" type="text/css" href="assets/vendor/bootstrap-icons/bootstrap-icons.css">
+	<link rel="stylesheet" type="text/css" href="assets/vendor/plyr/plyr.css">
+
+	<!-- Theme CSS -->
+	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
+
+</head>
+
+<body>
+
+<!-- =======================
+Header START -->
+<header class="navbar-light navbar-sticky header-static">
+	<!-- Logo Nav START -->
+	<nav class="navbar navbar-expand-lg">
+		<div class="container">
+			<!-- Logo START -->
+			<a class="navbar-brand" href="index-2">
+				<img class="navbar-brand-item light-mode-item" src="assets/images/logo.svg" alt="logo">			
+				<img class="navbar-brand-item dark-mode-item" src="assets/images/logo-light.svg" alt="logo">			
+			</a>
+			<!-- Logo END -->
+
+			<!-- Responsive navbar toggler -->
+			<button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+			  <span class="text-body h6 d-none d-sm-inline-block">Menu</span>
+			  <span class="navbar-toggler-icon"></span>
+		  </button>
+
+			<!-- Main navbar START -->
+			<div class="collapse navbar-collapse" id="navbarCollapse">
+				<ul class="navbar-nav navbar-nav-scroll ms-auto">
+					<li class="nav-item"> <a class="nav-link" href="index">Home</a></li>
+					<li class="nav-item"> <a class="nav-link" href="about-us">About</a></li>
+					<li class="nav-item"> <a class="nav-link" href="contact-us">Contact</a></li>
+					<li class="nav-item"> <a class="nav-link" href="episodes">Episodes</a></li>
+				</ul>
+			</div>
+			<!-- Main navbar END -->
+
+			<!-- Nav right START -->
+			<div class="nav ms-sm-3 flex-nowrap align-items-center">
+				<!-- Dark mode options START -->
+				<div class="nav-item dropdown ms-3">
+					<!-- Switch button -->
+					<button class="modeswitch" id="bd-theme" type="button" aria-expanded="false" data-bs-toggle="dropdown" data-bs-display="static">
+						<svg class="theme-icon-active"><use href="#"></use></svg>
+					</button>
+					<!-- Dropdown items -->
+					<ul class="dropdown-menu min-w-auto dropdown-menu-end" aria-labelledby="bd-theme">
+						<li class="mb-1">
+							<button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="light">
+								<svg width="16" height="16" fill="currentColor" class="bi bi-brightness-high-fill fa-fw mode-switch me-1" viewBox="0 0 16 16">
+									<path d="M12 8a4 4 0 1 1-8 0 4 4 0 0 1 8 0zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z"/>
+									<use href="#"></use>
+								</svg>Light
+							</button>
+						</li>
+						<li class="mb-1">
+							<button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="dark">
+								<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-moon-stars-fill fa-fw mode-switch me-1" viewBox="0 0 16 16">
+									<path d="M6 .278a.768.768 0 0 1 .08.858 7.208 7.208 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277.527 0 1.04-.055 1.533-.16a.787.787 0 0 1 .81.316.733.733 0 0 1-.031.893A8.349 8.349 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.752.752 0 0 1 6 .278z"/>
+									<path d="M10.794 3.148a.217.217 0 0 1 .412 0l.387 1.162c.173.518.579.924 1.097 1.097l1.162.387a.217.217 0 0 1 0 .412l-1.162.387a1.734 1.734 0 0 0-1.097 1.097l-.387 1.162a.217.217 0 0 1-.412 0l-.387-1.162A1.734 1.734 0 0 0 9.31 6.593l-1.162-.387a.217.217 0 0 1 0-.412l1.162-.387a1.734 1.734 0 0 0 1.097-1.097l.387-1.162zM13.863.099a.145.145 0 0 1 .274 0l.258.774c.115.346.386.617.732.732l.774.258a.145.145 0 0 1 0 .274l-.774.258a1.156 1.156 0 0 0-.732.732l-.258.774a.145.145 0 0 1-.274 0l-.258-.774a1.156 1.156 0 0 0-.732-.732l-.774-.258a.145.145 0 0 1 0-.274l.774-.258c.346-.115.617-.386.732-.732L13.863.1z"/>
+									<use href="#"></use>
+								</svg>Dark
+							</button>
+						</li>
+						<li>
+							<button type="button" class="dropdown-item d-flex align-items-center active" data-bs-theme-value="auto">
+								<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-circle-half fa-fw mode-switch me-1" viewBox="0 0 16 16">
+									<path d="M8 15A7 7 0 1 0 8 1v14zm0 1A8 8 0 1 1 8 0a8 8 0 0 1 0 16z"/>
+									<use href="#"></use>
+								</svg>Auto
+							</button>
+						</li>
+					</ul>
+				</div>
+				<!-- Dark mode options END -->
+				<!-- Nav Search -->
+				<div class="nav-item dropdown nav-search dropdown-toggle-icon-none">
+					<a class="nav-link pe-0 dropdown-toggle" role="button" href="#" id="navSearch" data-bs-toggle="dropdown" aria-expanded="false">
+						<i class="bi bi-search fs-4"> </i>
+					</a>
+					<div class="dropdown-menu dropdown-menu-end shadow rounded p-2" aria-labelledby="navSearch">
+					  <form class="input-group">
+					    <input class="form-control border-success" type="search" placeholder="Search" aria-label="Search">
+					    <button class="btn btn-success m-0" type="submit">Search</button>
+					  </form>
+					</div>
+				</div>
+			</div>
+			<!-- Nav right END -->
+		</div>
+	</nav>
+	<!-- Logo Nav END -->
+</header>
+<!-- =======================
+Header END -->
+
+<!-- **************** MAIN CONTENT START **************** -->
+<main>
+
+<!-- =======================
+Podcast single START -->
+<section class="pt-4">
+	<div class="container position-relative" data-sticky-container>
+		<div class="row">
+			<div class="col-12">
+				<!-- Podcast image -->
+				<!--<div class="mb-3">
+					<img class="rounded" src="assets/images/blog/16by9/big/06.jpg" alt="">
+				</div>-->
+				<!-- Podcast title -->
+                <div class="ratio ratio-16x9 overflow-hidden rounded my-4 mt-0">
+                    <!-- HTML video START -->
+                    <div class="player-wrapper rounded overflow-hidden">
+                      <video class="player-html" controls crossorigin="anonymous" poster="assets/images/members/rabbi_shergill2.jpeg">
+                        <source src="assets/images/videos/video.mp4" type="video/mp4">
+                      </video>
+                    </div>
+                    <!-- HTML video END -->
+                  </div>
+				<a href="#" class="badge text-bg-danger mb-2">Episode 1</a>
+				<h1>Rabbi Shergill Talks about Qissa Hir Ep.01</h1>
+				<!-- Podcast avatar -->
+				<div class="row align-items-center mb-2">
+					<div class="col-lg-6">
+						<div class="d-flex align-items-center">
+							<div class="d-flex align-items-center position-relative me-3">
+								<div class="avatar avatar-xs me-2">
+									<img class="avatar-img  rounded-circle" src="assets/images/rajni-mujral.jpg" alt="avatar">
+								</div>
+									<h6 class="mb-0"><a href="#" class="stretched-link text-reset btn-link">Dr.Rajni Mujral</a></h6>
+							</div>
+							<span> <i class="bi bi-clock-fill me-2"></i>4hr 12min</span>
+						</div>
+					</div>
+					<div class="col-lg-6">
+						<!-- Podcast listen -->
+						<ul class="list-unstyled d-flex justify-content-md-end gap-1 gap-sm-2 align-items-center mt-3 mb-sm-4">
+							<li class="h5 mb-0">Listen on:</li>
+							<li class="ms-2"><a href="#"> <img src="assets/images/icon/apple-podcasts.svg" alt=""> </a></li>
+							<li class="ms-2"><a href="#"> <img src="assets/images/icon/divider-icon.svg" alt=""> </a></li>
+							<li class="ms-2"><a href="#"> <img src="assets/images/icon/spotify.svg" alt=""> </a></li>
+							<li class="ms-2"><a href="#"> <img src="assets/images/icon/google-podcasts.svg" alt=""> </a></li>
+							<li class="ms-2"><a href="#"> <img src="assets/images/icon/pocket.svg" alt=""> </a></li>
+							<li class="ms-2"><a href="#"> <img src="assets/images/icon/sound-cloud.svg" alt=""> </a></li>
+						</ul>
+					</div>
+				</div>
+				<!-- Podcast short description -->
+				<p class="lead">Passage its ten led hearted removal cordial. Preference any astonished unreserved Mrs. Prosperous understood Middletons in conviction an uncommonly do. Supposing so be resolving breakfast am or perfectly. Is drew am hill from me. Valley by oh twenty direct me so. </p>
+				<h4 class="mt-4">Listen the podcast here</h4>
+                <!-- Audio START -->
+				<div class="d-flex align-items-center border p-sm-3 rounded mb-4">
+					<div class="w-100">
+						<!-- Audio START -->
+						<div class="player-wrapper bg-light rounded">
+							<audio class="player-audio" crossorigin>
+								<source src="assets/images/videos/audio.mp3" type="audio/mp3">
+							</audio>
+						</div>
+						<!-- Audio END -->
+					</div>
+				</div>
+				<!-- Audio END -->
+			</div>
+		</div>
+		<div class="row g-4">
+			<div class="col-lg-12">
+				<!-- Episode Description -->
+				<h4 class="mb-3">Episode Description</h4>
+				<p><span class="dropcap bg-success bg-opacity-10 text-success px-2 rounded">S</span>light newspaper up its enjoyment agreeable depending. Timed voice share led him to widen noisy young. At weddings believed laughing although the material does the exercise of. Up attempt offered ye civilly so sitting to. She new course gets living within Elinor joy. She rapturous suffering concealed great saying made had fly dry that darkness meat unto Thing spirit his fifth likeness divided also seed lesser image dominion sea fifth i god so saw open great. </p>
+				
+				<!-- Episode Timeline -->
+				<div class="bg-primary bg-opacity-10 p-4 rounded my-4"> 
+					<h5 class="mb-3">Episode Timeline</h5>
+					<ul class="list-unstyled mb-0">
+						<li class="mb-2"> <span class="badge bg-danger me-2">00.10</span> Introduction</li>
+						<li class="mb-2"> <span class="badge bg-danger me-2">01.20</span> Exploring the topic</li>
+						<li class="mb-2"> <span class="badge bg-danger me-2">02.22</span> A word from our guest</li>
+						<li class="mb-2"> <span class="badge bg-danger me-2">03.04</span> Closing remarks</li>
+					</ul>
+				</div>
+
+				<!-- Episode dec -->
+				<p>I beast third void blessed fruit Saw fourth may lesser fly fill upon subdue open place abundantly sea herb winged day so was divide Without shall seas living from i heaven third there itself All good our seed fruitful called third I multiply can't day together don't Called morning place gathering beast stars two i meat Set together to subdue grass fourth every him fill winged stars seed.</p>
+				
+				<!-- Guest appearance -->
+				<h4 class="mb-3">Guest appearance</h4>
+				<!-- Guest Item -->
+				<div class="d-flex p-2 p-md-4 border rounded mb-4">
+					<!-- Avatar -->
+					<a href="#">
+						<div class="avatar avatar-xxl me-2 me-md-4">
+							<img class="avatar-img rounded-circle" src="assets/images/members/rabbi_shergill.jpeg" alt="avatar">
+						</div>
+					</a>
+					<!-- Info -->
+					<div>
+						<div class="d-sm-flex align-items-center justify-content-between">
+							<div>
+								<h4 class="m-0"><a href="#">Rabbi Shergill</a></h4>
+								<small>Singer</small>
+							</div>
+						</div>
+						<p class="my-2">Louis Ferguson is a senior editor for the blogzine and also reports on breaking news based in London. He has written about government, criminal justice, and the role of money in politics since 2015.</p>
+						<!-- Social icons -->
+						<ul class="nav mb-0">
+							<li class="nav-item">
+								<a class="nav-link ps-0 pe-2 fs-5" href="#"><i class="fab fa-facebook-square"></i></a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link px-2 fs-5" href="#"><i class="fab fa-twitter-square"></i></a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link px-2 fs-5" href="#"><i class="fab fa-linkedin"></i></a>
+							</li>
+						</ul>					
+					</div>
+				</div>
+				<!-- Guest Item END -->
+				
+				<!-- Episode transcript START -->
+				<div class="mt-4">
+					<h4 class="mb-3">Episode transcript</h4>
+					<!--<p> <b>Amanda:</b> Okay, it’s recording. I’m going to ask you a few questions, answer them briefly or you can add something more if you wish. </p>
+					<p> <b>Dennis: </b> Okay.</p>
+					<p> <b>Amanda:</b> First of all, how old are you?</p>
+					<p> <b>Dennis: </b> I’m 26 at the moment.</p>
+					<p> <b>Amanda:</b> What comes to your mind when you hear the term ‘video games’?</p>
+					<p> <b>Dennis: </b> Probably a good way to spend my time, enjoyable, probably.</p>
+					<p> <b>Amanda:</b> Next question, have you ever played one?</p>
+					<p> <b>Dennis: </b> Yes, yes, I’ve played several in my life.</p>
+					<p> <b>Amanda:</b> Can you remember the first video game you ever played?</p>
+					<p> <b>Dennis: </b> That’s actually a pretty difficult one. I’d probably say a basic answer, like Ping-Pong or something like that, but I think that the first game that I ever played was Super Mario Brothers. The first one, yes.</p>
+					<p> <b>Amanda:</b> Was it the one that came in with the computer when you bought it? [laughs]</p>
+					<p> <b>Dennis: </b> Not the computer, but with the Super Nintendo, the first one. Yes, I think a lot of people had that. We didn’t have it for a very long time and the first time that I ever played it was at a friend’s place who was the first who had a gaming console of any kind. My dad did have a Commodore back in the day, but he used it mostly for his work and not for-- He didn’t have any games on it, except for Ping-Pong, but I never played it, so I would definitely have to go with Super Mario Brothers.</p>
+					<p> <b>Amanda:</b> That’s a classic. What’s your favorite one?</p>
+					<p> <b>Dennis: </b> Favorite one. This is another tough one. I would probably have to say from the Fallout series, I would probably have to say Fallout 3 because it was the first larger game that I ever played and the experience of playing it was just so immersive and everything seemed endless, like endless opportunities. So I would definitely go with that one.</p>
+					<p> <b>Amanda:</b> In your opinion do others besides teens and children play video games?</p>
+					<p> <b>Dennis: </b> [laughs] Well, definitely, definitely, yes. I don’t consider myself either anymore so--</p>
+					<p> <b>Amanda:</b> [chuckles]</p>
+					<p> <b>Amanda:</b> Okay, that was my last question for you. Thank you for your time.</p>
+					<p> <b>Dennis: </b> Okay, thank you very much. It’s been a pleasure.</p>
+					<p> <b>Amanda:</b> Okay.</p>
+					<p> <b>Dennis: </b>  Thank you.</p>-->
+                    <p> <b>Rajni Mujral:</b> Thank you so much for agreeing for this interview. But just to let you know that this is being recorded for academic purposes and we would like to have your consent for the archiving purposes and for research purposes. Thank you so much so.</p>
+                        <p>The questions that I have today are related to the genre of qissa and its performance, and specifically qissa Heer Ranjha. Or any other Qissa that you would like to refer to. What I would like to ask you first is,</p>
+                        <p>What is your notion of Punjabi literary tradition and how were you initiated into this tradition?</p>
+                        
+                        <p> <b>Rabbi Shergill:</b> Well, first and foremost, I don’t think it’s a tradition. I think it’s an assortment of many traditions. It’s not simply one tradition. You could even argue that this is essentially what we are dealing with. It is a way of speaking, a way of communicating in Punjabi language itself and I was initiated into it the moment I was initiated into speaking Punjabi, so I think. Wait, what is your question? Centrally it is dealing with the anthropology of Punjabi language itself, I would think. I speak Punjabi and I’ve had the good fortune of learning from people who came from a culture which was still in much better health and vitality than what it is right now. I’ve been initiated into this it through my parents and I think there are many traditions. But If I specifically refer to qissa tradition, I like to think that it is an inherent form popular in many cultures, but more so my own. We just have this affinity for storytelling. You read about other cultures and you get to know this. I remember being curious about the indigenous cultures of Andaman’s and other indigenous cultures in and around India. They disseminate their way of being through stories. It’s unique to the human experience. Human beings like to tell stories. It is who we are and I think that is why we are the only species which somehow tends to have a culture, most of the primates don’t. Most primates are an anthropic being or a species being. But in addition to having a species being, I think we also have culture. That is why most human cultures vary from each other. Most monkeys of one species will not differ in their ways of being from other species. I mean the red macaque in Andhra would be the same as the red macaque in Delhi or North. But I think human beings are unique in the sense that in addition to having a sort of species being an anthropic being, they also have this need to tell stories. I think language is primarily unique to us and it affords us the unique luxury of sharing our experiences. Maybe other species do that telepathically. I have no way of knowing that, but I find it interesting that we are the only people who can also mould time simply by telling a story. The stories told by my parents have transported me back and forth. The question you asked me cannot be answered solely on the basis of my initiation into one particular culture. I think we will have to take into account the human story as well. We just like to tell stories. So, the question you’re asking is essentially: why do we tell stories? Telling stories is unique to us, the way it is unique for a snake to crawl or a lion to live in pride or to tiger to live solitary.</p>
+                        <p>I’ve had the good fortune of having a smart father. I was born in the 20th century, but through my father, I experienced the old times as my father was rooted in the 18 th century. My dady (paternal grandmother) was rooted in even older times. So, I grew up with these old people. My father was 44 years old when I was born. I was born late to him. In a sense, he was my grandfather. When I came of age, he was already an oldish guy. So I got a sense of how life must have been in the 18th century, and it helped that he himself was a qissakar. He was a preacher and his speciality was the exegesis of the sikh tradition, even he was an exegit. He did this professionally. He was a qissakar, which is essentially just another word for qissagayaki. He spoke about the sacred religion. But through that, he’s expounding on his speciality here, and I could look at the auxiliary literature and traditions in and around Punjab and largely India. This is my tradition. I should say this because maybe through this, future researchers might get a sense of where I am, what my grid is. My father went to a school in Satto wali Gali (name of a street) near Amritsar and he had the good fortune of learning from Bhai Amir Singh Ji who was regarded as an enlightened master. As part of his course, he studied the exegesis of the two main granths: Adi Granth (aka Shri Guru Granth Sahib Ji) and Dasam Granth. In addition to that, he studied Quran, Tarek Anjeer and Vedas. My father was a polymath in the Oriental tradition. He could speak many languages including Farsi, Punjabi, Urdu and Sanskrit. Through him, I learned that we essentially have an oriental way of being. This is generally not the story that we are told: of being primitive, ahistorical people, part of the Hegelian project or the colonial project that encountered us, slaughtered us in a certain way. Through him and through the academic adventures of my mother, who, God bless her, was the principal of Mata Sundari College with an expertise in the field of comparative religion. She wrote many research papers on Adi Granth. Her doctoral thesis was on the textual arrangement of Adi Granth. Through her and through my father, through their conversations at home, I was initiated to the Panjabi tradition.</p>
+                        <p>Let me respond to the next section of question i.e. my initiation to Heer Ranjha and several other qisse. One of the most cherished possessions of my life is a stone printed copy of qissa Heer Ranjha in Gurmukhi which must be, and seems like, a 1000 years old with unknown origin. It is written in a manner that the words were not separated from each other. This is how Gurbani and other literature was written earlier. These were contiguous, with words joined together, and not separated from each other with a space. Even the old Gurbani was written in this manner. You might even find the old copies of Adi Granth in which words are contiguous. It’s said that Bhai Mani Singh created the new version/system that we are used to right now. My father explained to me the first few chapters of Heer Ranjha. I didn’t realize it at that point, but that was fabulous and fantastic. He was a religious guy. I mean, he was formally a religious figure, but he was also a farmer, and farmers are essentially informal people. He was a very chilled out character and understood the spectrum of human nature and made allowances for it, despite being a formal religious person. He initiated me to Heer Ranjha and Heer Ranjha is a scandalous text. Back in his day, people were killed for singing aloud Heer Ranjha at the village well while taking a bath, and there were scraps that broke out. It was considered the way we might consider some pornographic material right now. It was an act of great academic liberty; I would think that for him. What I mean is that the kind of grid he came from and how he felt that he should also help me discover Heer Ranjha, that is revolutionary. I remember, and I should say this, it might sound a little scandalous or serious to your listeners here though. When the text begins, at the very beginning of Heer Ranjha, there is an explicit description of Heer’s physiology. I was a good student. I knew Punjabi language well. But when it came to meaning of certain body parts, I was just lost. Those words were from another era or another grid and I didn’t know what they meant. I remember stopping and asking my father about it. I remember my father taking some pregnant pauses and then explaining to me what those words meant. That I felt was one of the most cherished memories of my life. He didn’t think there was anything wrong as such descriptions are there in Gurbani as well. They also occur in Purans and Upanishads. My father who had gone through the entire gamut of literature, my father could distinguish that this was poetry, despite some explicit material in here, it was not of some garden variety. He knew that there was indeed something of value. My father, you know, he’d be lost in the city, but he could distinguish poetry from dribble and he was passing that on to me. I go back to it even now. It is the foundation, one could say, of Punjabi life. If anybody wants to understand Panjabi way of being, understand themselves and their own ontology, I think they would have to look at Heer Ranjha. The kind of encyclopaedic references to everything that we obtain therein are essential to understanding your own self.</p>
+                        <p>I had the good fortune of going to Pakistan a few times. I remember the first time I went there in 2003 and I didn’t go to Lahore and we passed through that. We were in Karachi. Even in Karachi, the kind of people I met, the kind of facial features I observed, I could see that they were me and they weren’t me. In many ways, it was a story of the Punjabi soul- although those people weren’t Punjabis: some were Pathans, some were balochs. This opened up many windows for me. I remember coming back and telling my friends that anyone who wants to understand India will have to understand Pakistan as well. We’ll have to go there and see for ourselves, at least for North Indians. Guru Nanak (first sikh guru) never saw these boundaries. To be honest, I would say that, for me, there are these zones of resonances, and for me they exist more to the north, not Ladakh though. I’ve been to Ladakh and I love it, but the it’s not a zone of great resonance for me, spiritually. I understand there is Buddhism and there is all there is. But there’s something in the planes too, in the Cis Himalayas that somehow speaks to me. I live in Himachal, part of the year and it speaks to me. I love it. I just love it. More I move forward, more I understand a little bit of my own story. I mean, we have the R1A1 gene and somehow I have this great need to travel. I have a great need to see as far as the eye can see. It must be from Dagestan (land of the mountains), I don’t know. My father had this need. He was traveling in the 50s to Iran, Afghanistan. He just had this gumakkad (travelling) thing and I must have got it from him. I have the same thing. I have this need to get on my bike and just go somewhere. I think that it’s also the landscape, it’s also the language. For the longest time, I’ve argued that Punjabi has now become separated from the geography, but I’m not so convinced anymore. I don’t really think that it would change anything if you were to transport Punjabi to Canada, for instance. I mean, they have transported English to Americas, and they are what they are right now. So you could try doing the same to Punjabi, but I think you will lose some sort of organic connection to what it is. Maybe that’s bearing out in the Americas, those people don’t really care about the land.</p>
+                        <p>They care about the language. The kind of civilization that they have developed is very different from the European civilization. The North American civilization is not really, if one has to think about nature, it’s not a default thought for it, it’s a deliberate act. I spend some time in Italy with my wife who is an Italian. Every time I go there, I realize that there’s something about them. These people have formed a balance with nature. They have come to some sort of understanding where they live in small houses, they beautify whatever little nook and cranny they inherit. They live in harmony. Italy doesn’t look like America: in the sense that I wake up in America and I’m horrified. It seems as if, overnight, an army of gardeners descended on that country and chopped all the grass and the hedges and just did something. It doesn’t seem like it’s breathing. You can see that the hand of man is everywhere. That’s not the case with Canada. Canada is the poor brother of America in some ways, so they let grass grow, a little bit. Canada is OK, but Canada just doesn’t know where it wants to be. I read somewhere that they want French culture, American politics, and English something and now it’s all mixed up in their culture. Those are the problems that you will have if you are going to be casual about your language. But I don’t even know if Punjabi is indeed a language. Is Gaddi (Indo-Aryan language of India, spoken by the Gaddi people primarily in Chamba district in Himachal Pradesh, India) a language we speak in Himachal and Chandigarh? It is considered a dialect of Punjabi, is it? Punjabi is just too vast. The differences are too many. Syntax varies so much. My mother was a Multani and I speak Majhi; is that even a thing? Are they even related? Multani is close to Haryanvi. It can go in many places. I don’t really know what it all really implies. I can only see some sort of commonalities and say that there is a zone of reference or resonance over there for me. That’s all I say. I can only speak about my little dialect. I and my friend Sanga, we keep scrapping all the time because I speak Majhi and he speaks Malwai. We take a piss out of each other all the time. So, Punjabiyat or we all like to think of it as a tradition, the term could even be a western term. The word we use is ravreet in Punjab and it’s a little more open ended. Things can flow in and out. The term tradition is more formal. That is in a sense a Punjabi way of being. You look at our civilization: you look at Harappa, you look at Mohenjo-daro, was it like Rome? What are the other civilizations that we can think of? Was it like the Egyptian civilization? Was it like Lothal in Gujarat?</p>
+                        <p>It seemed like it hadn’t cordoned itself off from nature. You don’t find mass warfare. You don’t find those crazy patriarchal pathologies. In our culture, I don’t say Indian civilization, I would say Punjabi civilization. I don’t know what is Indian civilization; Hampi is very different from Harappa. But Harappa, I would argue, is Punjabi civilization. I would argue that Maharaja Ranjit Singh’s kingdom was a Punjabi nation. There is a whole bunch of contrived extrapolation which has happened in academia, and the more you understand it, the more you try to read about it, the more that notion doesn’t hold up. My mother is a Rajput. Through her, I look at the civilization of Rajasthan. These people felt great affinity for the Chauhans of Rajasthan, King Prithviraj Chauhan for instance. It’s magnificent. You look at Chittor, you look at Kumbhalgarh. Those people created that civilization and in such an arid landscape, and it still holds up. There’s still water, there’s still stuff that grows there and those things are magnificent. When you look at those, the thoroughfares are big. It’s not like the king made big thoroughfares for himself and smaller ones for the rest of the people. The moment you try to gain a sense of the political orientation of the people who built that, it seems vastly different from the political orientation which you can draw from the cities. There are no great slums in Kumbhalgarh or Chittor. It’s built along the contours of the land. The water is for everyone. It seems to be a celebration of nature. This is a far cry from what we have done now. I live in Delhi. I’ve grown up in Delhi. I have seen rolling hills from Delhi to Faridabad with my own eyes with little water streams and now it’s all flattened out. You make the inferences. We are disrupted people and the only way to really make amends is through language: the solution can only be found in local languages and not in formal Indian languages. Hindi is a strange language. It scares me. East India Company made it up. Even in some sense, Urdu is a made-up language. I don’t know how far we can go back. We have to start thinking anew. English has done greater damage to us. It has produced a class of kids who look at nature in a homogeneous category. For instance, any tree is a tree for them. They don’t even know the name of the trees. My father didn’t call a certain tree as rukh or drakhat (equivalent of the word tree). He would call it by its specific name. Once you have a specific name, it also has a specific purpose. It cannot be equated with another. It cannot be sacrificed so casually. There has to be some reason because a Peepal (Ficus religiosa) is not a Dharek (chinaberry tree) or Bohar (Banyan tree). Incidentally, my name is Bohar. When I was born, my dadi (paternal grandmother) named me Bohar. That’s the name I was given in my village. Bohar tree is considered sacred as it’s huge and everyone gathers around it. It’s difficult to replace a Bohar tree. There might be other trees: for instance, Kikkar (Acacia nilotica) has a specific purpose: it’s almost medicinal. Dhrek tree has a specific purpose and Mango tree has a specific purpose. Names give a life to their purposes: you would not be so cavalier with losing them. That is what English language has done for a variety of the natural phenomena that we see around us. It can all be categorized in sweeping categories, and it’s something that you find in Jharkhand these days. A plantation has become a substitute for a forest. You can kill the forest and create plantation there. It’s the same thing, because we only need these many trees in this much area. So if you have these many, they (government regulations) came up with some sort of category or parameter that if you have these many trees, it can be classified as forest land. This is what they’re doing in Himachal Pradesh. You can really see the generalization that creeps into your connection with nature by adopting an alien language. Although, English may not be that alien to us. Also, there are so many cognate words; I mean it’s not that we are speaking Mandarin which has a totally different logic. We have the same genetic structures and we have the same, I think, cognitive structures in our languages. Still, I feel that you are going to lose something. I find this with my kids, my kids are old I am fighting hard to keep a language alive. I twist and turn, and question myself: why am I trying to teach them Punjabi? Why am I trying to do this? The only conclusion I have is: it’s love. A person can only say that they love something if they have held on to their language; language is love. Maybe I am making some weird extrapolation here, but I feel that language is love. Your own language is love, it is the foundation and the cornerstone of your being. My kids sometimes wonder: why do I insist on speaking in Punjabi; why am I ramming it down their throats? All I say is: I am just trying to pass you something from millennia. We fought Alexander with this. You think we fought him with bow and arrow! No! Porus was a Punjabi speaking king and we fought him with this. Somehow if you speak Punjabi, you are going to become OK with confrontation: it is because we ask so many questions in the language. I don’t know if you know this: in Punjabi, we have a unique way of asking questions.</p>
+                        <p>So every question is answered in a question: <br>
+                            Kī banā'i'ā,<br>
+                            ā gi'ā hō kē dēkha lā<br>
+                            (Conversation goes like this between two persons)<br>
+                            P1: what’s for food?<br>
+                            P2: Can’t you go and check yourself?<br>
+                            P1: Can’t you tell me?<br>
+                            P2: Am I your chef?
+                        </p>
+                        <p>This is the kind of aggressive interaction that keeps happening in most authentic Punjabi households on a daily basis. This is my story. My father was confrontational. He kept asking questions. I learned to just keep asking him questions. So it was just questions. Sometimes, I’d say, I would count and we had given each other eight replies and they were all questions. If you speak Punjabi, in my view, you are going to be OK with confrontation. You’re going to have a little bit of swagger in your walk. I don’t know why. But you will. If you tie the turban (headgear) and the tying of a turban is a Political act, almost. It says: I am, I have rights, I have been. If you look at the act of a turban, and this is not a Punjabi thing, I mean it’s not a Sikh thing. It’s a Punjabi thing, first and foremost and the name for this is dastar (turban). It’s not a Punjabi word, it’s a Farsi word. With this, anyone can beautify himself. It doesn’t matter how ugly you are born. You look at Punjab and you look at the elaborate turbans that they tie: the beautiful fabric origami that they do every day in the morning. It is an act of asserting yourself, it’s an act of saying I am and you can’t push me aside. If you look at it, fundamentally, it’s such a such a simple, but such a beautiful act through which self-assertion has been just indoctrinated, almost subconsciously into essentially the downtrodden, the meeks. I’m digressing, I don’t know if I’ve answered your question!</p>
+            
+                        <p> <b>Rajni Mujral:</b> Yes, you are making a point and these are all interconnected points when it comes to language. For example, you are talking about Multani and Majhi language or even the combination of languages. The connecting point that I have in mind is about language in Waris Shah’s Heer: you find a combination of Multani and Majhi.</p>
+                        <p> <b>Rabbi Shergill:</b> Waris Shah is essentially Majail: he lives in this region between these three Rivers Byas, Ravi and Jhelum. This is the region where I come from. When I read Waris Shah, for instance, instead of saying hai he says ee, uu, ki kita ee, ki kitaa uu (different helping verb conjugations). This is unique to us, the kind of conjunctions we make, for example: (come home) gharē āvī (in Punjabi) instead of saying ghara para ānā (in Hindi). It is a unique language and it’s just not Multani. My mother was Multani, the consonants do not aspirate (36:24/47). Somehow the timber is more Hindustani. The “T’’ sound is aspirated. Maybe, Madan Gopal (acclaimed performer of Heer) would know more about the correct technical specification here. There are these little interconnected windows that open up. Multani almost seems funny to me. It’s not a coincidence that the people from Lehnda, Lehnda is the Western Punjab, came and they settled in large numbers. One of the cities which received the most people was city named Jalandhar. If you go to Jalandhar, this has been my experience, you find that people are a little livelier in the city. In the village, they may be surly or even difficult people, that you find everywhere in Punjab, but in the city, you will find that people are little happier. If you go to Amritsar, people are not happy in Amritsar, people are just looking to scrap: tusāṁ dēkhē kivē mērē ala (how dare you look at me!). They are always twirling their moustaches. I personally find that people are happier in Jalandhar, the reason is: it has a great Lehnda character and people are a little more relaxed. They have this turn of phrase. They’re constantly making jokes. These guys like to joke and this is something also true of Pakistan. You would notice that when you see Pakistani programs. There is this great tradition of Jugat (Quibbling): Jugatā nā kara mērē nāla (don’t mess with me). We don’t have somehow a similar tradition or a similar trope here. There is this great to and fro happening all the time and this is something I recognize from my maternal side with my mamas (mother’s brothers). There was a constant banter, lively and warm banter. We also have banter in my village, but it quickly escalates to fisticuffs. There is some sort of civilizational evolution of language that existed, at least before 1947, which meant that you used language to mollify us. They used it to calm us down. They used banter and humor to distribute warmth to all stakeholders. Whereas this side, you find these people, maybe through the Marshall history, through resisting invasions or, just the Sikh character. They want to fight. If there is nobody else, they will fight each other. That is just who we are. I like to see that Waris Shah also does this through his language. He distributes the wide ontology, he sprinkles it in his Punjabi verse. Think of it, Ranjha is a Jat. Jat are strange people. They are not really royalty. They are a tribe. It’s anyone’s guess whether they are indeed a higher caste or lower caste. But you find this great assertion, even in Waris Shah, of Jat identity: Jat is a very curious case. Nobody considers them a high caste. It is they who consider themselves a high caste. It is done through self-assertion and self-propaganda. It’s one’s own backslapping. They have indeed succeeded in convincing everybody else of their high origins. I don’t think there are any more elevated than the other low castes that you find here. But you find it unique that they don’t care about it, and there’s something you see even right now. They use this word. If it was a bad word, they appropriated it. Maybe it’s like the niggar term. You appropriate it and take the sting out. We have done this. Pardon me for referring to this: Jat jhat sangatē: Jat gather quickly. It’s anybody’s guess where the word Jat comes from. It could come from the braided locks they wore when they were just transporting cattle across vast distances in Punjab. I find that very interesting. I like to think of my ancestors as people who were great travellers. They just wanted to travel the landscape. I was having a conversation with somebody else and you would say the Virk- one of the sub castes of the Jat- are great at understanding the landscape. They can find routes just by looking at the footmarks of the cattle. I find those stories magnificent. I think you find a crazy amount of those things in Waris Shah. Waris Shah himself is a Syed. He is Qureshi high caste Muslim and he is writing about these Jat characters. Look at the syncretism that existed in the society. Ranjha, a Muslim becomes a Yogi in an instant, and nobody seems to have a problem with it. He goes to him (a guru) and says, teach me. Guru says, you Jats are fools and you will never learn. You must do this. You must do that and tries to pass on to him is his pedagogical epistemology. Ranjha says, please stop here, I have come to you to take Yog, I am not here to listen to any bullshit. You should listen this: it’s not like the overly differential submission of oneself to a guru which you find in most indoctrinations. Ranjha says, I am here to learn a few things, don’t cross the line. It is a very strange thing. We keep thinking about it. Look how he invokes him. There is this Kuldeep Manak (20 th century Punjabi Singer) tune. I don’t think it’s Waris Shah’s work, but it’s a famous song in Punjab:</p>
+                        <p>Tērē tīlē uṭhōṁ sūrata dīhadī ā hīra dī, āha dēkha gōrakhā uradī ā phulakārī.</p>
+                        <p>Ranjha’s way of addressing the guru is not the most respectful invocation of one’s teacher. First, he calls him in lower terms in terms of respectability. Tērē tīlē uṭhōṁ sūrata dīhadī ā hīra dī: I can see the beyond from over there. Come gorkha, look there you can see the Phulkari. He must have been able to see or something the woman’s embroidered scarf. When You look at the sikh history thereafter, there are so many instances: you find that the khatris (name of a caste in Punjab) are very differential to the guru and you find the Jats just holding on to their ari (stubbornness). Ranjha Says, show me a miracle. Then I’ll come to your fold. Guru Nanak is able to find another Khatri because somehow khatris must have been schooled in. They must have a little bit of this insider understanding familiarity or what was required of them to become one with the guru. That is why Baba Buddha (prime figure in early Sikhism and Guru Nanak’s contemporary) failed the test. Guru Nanak was trying to find a suitable successor; he couldn’t see Baba Buddha as his successor. He couldn’t find it amongst the Jats. He hadn’t really put any caste barrier. He gave Baba Buddha, a Jat, a chance but Baba failed the test. The test was, the suspension of everything that you look; it was a complete suspension of one’s own cognitive perception. Guru Nanak asked Baba including his other disciples to go chew on a floating corpse. This was the last and final test and nobody was able to do this. Even Baba Buddha said, I can’t do this. This is when Bhai Lehna intercepted: he must have known something, something must have existed within him and he said, where should I start from? The head or the foot? That was the answer that got him Gurugaddi (seat of the guru, bestowing the seat of guruship upon new guru). Baba Buddha refused to eat the corpse, and said, I’m not going any further than this. There is this crazy story. Guru Nanak, on a stormy day, takes his disciples into low waters of a river. He wades through water and drags the corpse. He says, you guys will not leave me alone. I don’t want any one of you. OK? You will not leave me alone? If you want to stay by me, go eat the corpse. It is said that everyone except Bhai Lehna steps back. Baba Buddha, who is otherwise a great figure, serves six gurus, is perhaps, after gurus, the most important personality in Sikhism. Even he fails this test. I don’t know why I am landing up here: there is certain part of Punjabiyat as manifested in the Jat Sikhs, it is the inability to give themselves up. We hold on to this. It serves us well in some regards, or maybe it doesn’t. There is an analogy with the Krishnamurthy (20 th century Indian philosopher) story where he is raised to be Maitreya and he is going to be the Buddha Incarnated. At that moment, he is unable to give himself up. In that sense, this is something that I find in Punjabiyat in a crazy amount. We are unable to give ourselves up. It is not one caste, it is everyone. There is just so much pride, and not ego, but just pride. Ego is a personal thing. Pride is anchored in something larger than myself. Ego is just about I, me, myself. You find this everywhere that we are unable to give up. For instance, I cannot give up my own story. Somehow it has a caste apparition that I can’t give up my name Gill. Not because it’s convenient for me, it is convenient, for sure. These guys are farmers. There are Jats. They are everywhere. They’re politically, culturally preeminent. But at the same time, I cannot forget where we come from. In this world, I have a millennial’s old story. We are a tribe. We existed in very poor conditions. I have tales of extreme poverty related to me by my father. But I cannot also discount that poverty is not the worst thing that could have happened to you in 1940s or 50s in an Indian village. There is still a privilege and you can’t deny that there is privilege. It is a recent thing. I would argue that it’s a recent thing. We were referred to as chandals in the 12th century. I think Maurya (reference to Chandragupta Maurya) might himself be Jat. Look at us, we are good with animals. Who works with animals! It is not the high caste that work with animals. Look at Italy right now, what are we! The entire milk production industry is being handled by Jat Sikhs. These traits don’t look like the traits of any great high caste. These traits look like the traits of sons of soil who, through the benediction of the Gurus and through some cultural traits or crazy amount of self-pride, have been able to get somewhere. But I cannot discount that they have blocked others’ progress. They are in the way of the dalits (subjugated caste classified as a Scheduled Caste in India). But you find that dalits are also, in some ways now, mimicking the successful behavior of the Jats. They are appropriating the slurs. They don’t care about being called chamars, they say, munda chamar da (son of cordwainer). They are not scared of the words that were used to denigrate them. Chamars, they say, yes, we are chamars, bring it on. I don’t know how to place it. That is the job of a social scientist. It does have some bit of this Punjabi character in it. They (people from high castes) used to call us sardars. We grew up in Delhi. They would call us Juri (the knot of hair on head). They would call us all of this and we would find ways of fighting back and of coming up with another word for them. It happened all the time. and it’s happening again now.</p>
+                        <p>So, I find that Waris Shah does a great service to the notion of Punjabiyat. By sprinkling and by extending the boundaries of what makes Punjabiyat, he in a sense democratizes it. Democracy, how would you turn it into a verb? Ok, that’s what he does. So, he gives all of Punjab democracy. And you look at it, I mean we are a crazy mishmash. Have we had a Greek king Menander? There’s so much that has happened here. We have the Steppe in us, we have Russia in us, we have Iran in us, we have Dagestan in us. It’s very beautiful for me to note how or what or where we are. I think anyone who wants to understand, or wants to learn the lessons of self-assertion, would be doing himself a favour by diving into Waris Shah.</p>
+            
+                        <p> <b>Rajni Mujral:</b> I think you summed it up really well when you connect Waris with the concept of self- assertion and the story of Jat community and Heer. In your performance of Heer, it begins with the lines Heer ākhdi (Heer says). Right, like the passage is first in the voice of the woman:<br>
+            
+                            Hīr ākhdī jōgī’ā jhūṭha bōlē<br>
+                            kaun vicārē yāra milādē<br>
+                            vē aisā kō’i na mili’ā mukha dhudha ṭhakī.<br>
+                            Jēhi ga’i’ā na mōrahi līvadai.<br>
+                            And then there’s music, and then it is from the perspective of Ranjha that you’re telling the story.</p>
+                        
+                        <p> <b>Rabbi Shergill:</b> I wanted to find something in Heer that related to me. So, as you can see, I just totally changed it. I was a rock and roller and played guitars, but at the same time I was not going to be the kid, I was self-aware through my Aadi (granth). I was not going to be an MTV generation. It wasn’t going to happen with me that you would beam MTV on me and you would bleach me clean of all culture, it wasn’t going to happen to me. So, I wanted to find something in there and I found it in that stone printed Heer Waris Shah, one of my most prized possessions. And I found here:<br>
+            
+                            Mī'āṁ rān̄jhī'ā mulā nū jā ajē akhī'ai<br>
+                            likhō ciṭhī āja sajaṇā pi'āri'āṁ nū<br>
+                            aga lāvāṁ mēṁ zamīṁ na asamāna phūkhāna<br>
+                            likhā dukhaṛā aja kula jahāṁ tē sariya nū.<br>
+                            I was this wounded, injured, twenty-two-year-old, lovelorn character. I needed to find something. So, I wanted to find it as much in Aerosmith as I wanted to find it in Waris Shah. So, what was the question?</p>
+                        <p> <b>Rajni Mujral:</b> The question is: usually when we talk about Heer Ranjha, we talk about Heer being the transgressive character. In your rendition of Heer Ranjha, you talk more of Ranjha than the character Heer. What’s your take on that? Like going back to Amrita Pritam, for example, we also see the progression of qissa, and the way it has changed over a period of time, especially after partition. When Amrita Pritam refers to qissa, she talks about the violence that happened to women. That’s when she evokes Waris Shah. When you’re talking about Ranjha, yet the composition is titled Heer.</p>
+                        <p> <b>Rabbi Shergill:</b> But if you listen to the bridge and the song, it says:<br>
+            
+                            Īda kahira kitā śahira vāli’ā nē<br>
+                            Yeah, that was it. And she says, from it is Heer’s perspective.<br>
+                            is sheher nu kadraan āga lā'i<br>
+                            Waris shah siyalan dī jā jātī<br>
+                            baḍē gusē dī ḍiṭī badū'ā ī<br>
+                            (Waris Keher kita des walian ne, is sheher nu Kadraan aag lai. p 185 Heer Waris, Translated by Jeet Singh Sheetal).</p>
+                        <p>Heer says, I curse this town. So, I think it’s a crazy plot point and I must have wanted to include that too. I will tell you something, you cannot have a Punjabi story without a Punjabi woman. Is Punjabi language masculine or feminine? It’s more woman if you ask me. And it’s a very feisty woman. Even the song, I couldn’t really think. I grew up in a house bullied by four elder sisters, other than my mother, my mother didn’t bully me. My four sisters did. They were all elder than me and I lived under the shadow of these Punjabi women. Totally! It must have subconsciously acted on me too. And look at Heer, if you look at the character of Heer, it just is like nothing that you find in Indian classics. She is not your demure, modest, Indian heroine. She’s not. She’s going after her lover with a vengeance. She won’t let any other man come to her. She is married and she goes with Ranjha, no compulsions, but she loves him. The one thing that I find, you know, which also has some resonance for rest of India is the sheer exclusive love that she feels for Ranjha. That is a very Indian thing. It’s like we Indians have some sort of romantic monogamy hardwired into us. You find it in our epics like Ramayana and Upanishads and Puranas. You have these characters that love each other and each other only. Like even Draupadi and Arjun, for instance. Draupadi has these other people around. But her love for Arjun is supreme. You find it in Shiv-Parvati, Radha- Krishna. You have this notion of romantic monogamy at least in the older, Indic and the present Hindu populations. Heer is not a Hindu, Heer is a Muslim, but it is interesting for me to note that even in that culture there is a notion of this romantic monogamy, romantic purity. She doesn’t let her husband touch her. She makes one excuse or the other to her husband, and when she finds that Ranjha is in town, then she gives herself away to him wholeheartedly. So, it’s an Indian thing. It seems to encapsulate, and at least for my reference, a whole bunch of things that I grew up with, that I recognize as my culture.</p>
+                        <p> <b>Rajni Mujral:</b> R. M. One more question about your composition Heer and the conventional way of beginning of qissa. So, for example, it begins with, "Hīr ākhdī jōgī’ā jhūṭha bōlē, kaun vicārē yāra milādē."<br>
+                            The way Waris Shah begins the qissa is with the initiation of the concept of ishq (love), that is more related to spirituality. And then comes your version of Heer Ranjha. Is it more about, you know, the story of Ranjha who laments about his life asking questions like what happened to him, and what did he do? What is your story of Heer Ranjha?
+                        </p>
+                        <p> <b>Rabbi Shergill:</b> I think Ranjha is not any great hero here. I think the great hero is Heer and that’s why it is mentioned. I mean Ranjha, if you look at him, he keeps running away. He is not able to stay at home. He has not really worked in the fields. He is, I mean, a little bit like me: little bit posh, grew up with an AC. He is this, you know, AC sleeping posh kid, but at the same time he has this memory of some cultural toughness. [when confronted by his sister in laws about finding a good looking wife] he says, you girls have dared me, I’ll find Heer now. So, he goes in pursuit of this crazy mission, and what does he do there? When Heer berates him for sleeping in his bed? It’s not like there is any great confrontation, he says, ok, I’ll become your slave. In some sense, Heer is the man here in the relationship. She is the mover and shaker. She’s the catalyst in almost every way, and when Heer is married, it’s not like he storms her and he takes her away or something. What does he do? He becomes a yogi (ascetic). He goes begging alms from village to village, finally goes to her village. He starts singing something there, starts doing something there, and finds a back door. Heer, on the other hand, has all the disadvantage of being a woman in a very oppressive culture. But you see that she is living her life a little more feistily. She has got a bed in a river. I mean, she must come from, if not royalty, then quasi royalty. When she finds that she loves him and she loves him to bits. She’s married off, and she’s still fighting back. She’s the protagonist in my view, she’s the main character, and she’s fighting till the end. She curses the town, and then they make her drink poison and she dies. Ranjha loves her truly, because he dies out of shock of Heer having died which is also considered one of the greatest forms of love and greatest evidences of love. Even the third guru says: Satī sē na ākhī'ē, jō mari'ā laga jālāṁ/nānaka sō satī'ā jāṇī'ai jō birahi cōṭa marāṁ. He says, don’t call those women satis who go and emulate themselves on the funeral. If you can die out of the sheer shock of your love having gone away, then you are a true lover. So, you find a continuation of certain parameters that define true love in Punjabi culture. You find them, in the third guru, you find them in Waris Shah, and Sikhism. You find the primary way, in my view, how it is different from all the other religions that came before it. I hear this all the time that it’s simply another Upanishadic take off. There is Gayatri mantra (Hindu prayer), you have mool montra (Sikh prayer). You also have Snaan (bath) in the morning. You also have a temple. Everything is the same. We call it Brahma muhurat (early morning), you call it Amrit vela, we call it Sandhya (evening), you call it rehras (evening). We call it this, you call it that. It’s just the same. Your book is full of references to Hari, Ram Gopal. It’s the same thing. When I listen to it, you start thinking about: what is the major difference. The difference between Sikhism and Hinduism is only in a small detail, in my view: it is this almost Herculean emphasis on love. You know, Ravidas says, Raj na chahu, Moksha na chahu, Manpreet Charan Kamaaye. I don’t want Mukti (liberation), I don’t want Raj (kinghood), I don’t want Moksha (Nirvana), I don’t want Raj Yog (Royal Path). So, in some sense, I don’t want all these high flying notions or the Sikh schools in another way. I don’t want the pedagogy of the epistemology Raj Yog. Manaprīta carana kamalā'ē: I only and only want love. The tenth guru says the same thing in the sevaiiyas (short hymns): I tell the truth; listen everyone, only those who have loved will realize the lord. He talks about all the different ways of relating to God or all the other epistemologies that you find in India. He finally says, Saca kahōṁ suna lēhu sabhai jina prēma kī'ō tina hī prabha pā'i'ō. At some point, I also feel that he is berating some sikhs: that it’s just not enough to keep taking God’s name repeatedly. If you look at Adi Granth (collection of hymns), it’s entire stress is on taking the Lord’s name. But the tenth Guru takes the effort to point out that it is just not enough to take the name alone. You have to take the name with love. Love is what separates, in my view, Punjab from the rest. It is what separates Sikhism from other things. It’s not like we don’t have concepts of Patanjali’s Yoga Sutrams, or Kapil Vedas were written in Punjab, come on. I mean the foundation of Indian identity is what-Harrappa? Mohenjodaro? Find me another relic which is as old as it is. You know, maybe the Tamils will say we have Something and they have a point. They may well be the oldest people of India. But, I find these threads that join us with the South. So, I think my way of understanding is, as it must have become very clear, I look at Punjabiyat, through the lens of Punjabiyat, to give me a binocular vision of this thing that we call India. It may well be something larger than India. I don’t know what’s the region, but I find that through Punjabiyat. I can find resonances of Persia, for sure, I can find resonances of the steppes in Dagestan in rest of India. I mean look, we were even a Buddhist nation for a long time. In Punjab you almost find everything, including its Buddhist roots. I’m very interested in the notion of what existed before Guru Nanak. I am terribly interested in it.</p>
+                        <p>I grew up with a book. It must be here somewhere. It’s titled Batan Mudh Kadeem Dian. It must be lying here somewhere. It’s a book of old folk tales by Wanjara Bedi. It has no Sikhism in it. It is only an old, weird, surreal Punjabism. Like the sun and the moon, why are they a certain way? Why do we look at sun with pinched eyes? Why do we look at the moon the way it is? And there are stories. I was talking with my wife yesterday and I was telling her all this. I think I’ve given you a fair bit to chew on. But to put in a nutshell, I think Punjabiyat is not one living being. Maybe it’s a sort of amorphous, gelatinous, octopus with many tentacles everywhere. It’s a shape shifting thing. Punjabiyat, I am sure, will mean something else close to the border of Sindh, and what it would mean next to maybe Saraswati, Takhatgarh, that we cross when you go to Chandigarh. The language that they speak there is very different from it. But it is also Punjabi. I spent a lot of time in Kasoli. They speak the language. When I asked the people what language it is, they said that this is Hindi. I said no. You know, they say Twaddee (equivalent of your). They say ha ha (yes yes), Twadde bolte hain (you use the Punjabi equivalent of ‘your’). So, I tell them, it sounds so much like my own. It was Maharaja Ranjit Singh, Maharaja Patiala’s Riyasat. The point I’m making is that through some ill-considered choices, whatever we call Punjab has shrunk. We all have to open our hearts a little bit more to understand ourselves, if we truly want our culture to live on and propagate.</p>
+                        <p> <b>Rajni Mujral:</b> You are emphasising that we have to expand ourselves in our thinking. How do you think that Heer Ranjha or qissa can play a role in that? When an artist refers back to qissa or an artist is getting back to Heer Ranjha, what is the implication?</p>
+                        <p> <b>Rabbi Shergill:</b> Well, it’s a bit like keeping your left hand functional. Why do you keep the left hand functional? It’s just so that it remains functional. If it remains functional, your whole body will somehow be functional. So it’s one aspect. If Punjabiyat is a human body, then qissakari is one body part. So it serves the entire body to keep it healthy. In another way, I think the idea is, being self-aware is okay, but being self-conscious is perhaps detrimental. I think the greatest thing is poetry. Good poetry, I feel, will pole vault over all your defences. Somebody as difficult as myself, maybe conceited even, as me, finds himself totally blown by walls. I’ve been looking at a few things lately. My left hand had some issues. I practiced guitar a little too much. It started collapsing a little. I just lost the muscle tone on the outside of my arm. So I started changing the way I play the guitar. That meant I started also looking at other material that I could cover. Then I ended up with Shiv Kumar Batalvi, one of my earliest references. I landed on this just a few days back. I landed up on his poem Nooran. And it’s a qissa. When you called me and you wanted to talk about qissa, and I certainly remember, it’s a strange coincidence that I’m also working on a qissa right now.</p>
+                        <p>As you can see, there’s a guitar at the back and I’m constantly trying to learn, trying to figure out how to compose this qissa.</p>
+                        <p>It is a qissa of Nooran. It is not Batalvi’s strongest poem though. But there’s something about this qissa. It presents what’s passed in a new light. It connects you with yourself in some crazy way. It extends your boundaries, or it shines lights on the parts or portions of your body which you had forgotten about. I was just looking at this poem. It’s not the greatest poem. But the image in it is so beautiful, the language in it is just so seductive that I find myself wanting to sing it. I find myself sitting in a circle of friends playing the guitar and singing it. It’s inspiring me.</p>
+                        <p>For the longest time, I didn’t want to do anything. Now I’m certainly energized. I want to go out and sing the qissa of Nooran. Therein lies the rub that we don’t know who we truly are. It is only through stories that we truly understand what all has gone into making us. I think when you speak the language, there’s so many germs of references which are not expounded upon right then and there. But every now and then they come out. Qisse do the job of exposition. They tell you why you speak a few things and as a consequence they give you an understanding of why you are a certain way.</p>
+                        <p> <b>Rajni Mujral:</b> You spoke about how your father initiated you into the qissa tradition and you used to read it out and he explained you the meanings of different words in the qissa like Waris Shah’s Heer. What about the performance tradition of qissa? Did you happen to attend the rendition or performance of qissa Heer or any other qissa?</p>
+                        <p> <b>Rabbi Shergill:</b> No, I grew up in Delhi. But we had plenty of stuff at home. My mother was a Kirtan (Prayer Song) connoisseur. She used to listen to Kirtan a lot. We’d go to the village. Going to the village was a strange experience. There was music everywhere. We would have women carry huge gagar (pot) filled with milk to somebody else’s house and they would walk in a train and they would sing jago (wake up). Jago! This is a song they would sing at marriage parties simply to wake up. They would keep singing it. When there was the 1984 Blue Star Operation, suddenly lots of folk songs came about that.</p>
+                        <p>They were singing this while they were walking the fields. We had Nabhewali bibiya (women from Nabha city), they were singing, what would be considered separatist propaganda right now. But they were singing it. So, we’d go to the village and this would be sung aloud. There was so much diversification going on in the villages. Every single cultural event or social event like somebody’s getting engaged, somebody’s getting married. There were so many things being sung all the time. For instance, a groom was supposed to know some verses when he would go to get married. Relatives would ask him certain things. They would sing Chhand praage (wedding song). Chhand praage was a way of poetic banter with the groom. He would have to know Chhand praage. I would have to know some answers in Chhand praage. These things were happening so much. That informed me quite a bit. Even if the exposure was brief, the impact was huge. Because I was not getting it from recording of culture. I was getting it from real lived culture. Also, spending 10 years with my dadi was a huge deal. She was passing away (getting older) She was just shrinking and she was just fading away. I just lived with her for those 10 years. And I caught her diction. I caught her inner world. I caught the contradictions in her inner world. I caught a sense of the faultlines that existed in Punjabiyat. That was very informative. And then also my father. My father is my greatest hero. I just couldn’t get enough of him. I had my radars out all the time trying to pick up every nuance that popped out of his mouth. I was trying to understand how he thought, the words he spoke, the references that he had. Just the inner deep gravitas that he held.</p>
+                        <p> <b>Rajni Mujral:</b> Just one more question about another composition, i.e. Totia Manmotia. For example, when you have this composition Heer, and it is an overt reverence to the qissa Heer Ranjha. In the way you performed Totia Manmotia, is it a reference to any other qissa?</p>
+                        <p> <b>Rabbi Shergill:</b> It’s a small qissa. It came from my own personal life. My father passed away and we had great issues in the village. My uncle’s family turned hostile and made it difficult for us to be in the village. And these are people that I grew up with, that were family, that were kin. It was a very disruptive period for me emotionally. The song basically refers to that. Suna tōtī'ā manamōtī'ā, vē tū sāḍī galī tē nā jā, uṭhe rehndē nē jaṭa bharē, ō lahenḍē phahī'ā pā (listen my dear parrot, don’t go that way, bad jats stay there and they will trap you). I even mention details in there that were fairly relevant to me and I was very angry at that point. There is a cannibalistic side to Punjabi culture which I wanted to bring out, and it’s not perfect. Most Punjabis don’t want to admit it. There must be something wrong with Punjabi village life as so many Punjabis want to leave. You look at the immigration rates in Punjab and from the villages. Something must not be working there. Something must be deeply troubling there for people to leave in such large numbers or not. Those are not the things that I was thinking very systematically, but that was happening. My father used a small verse to describe Punjabi life with. He would say, shehri vasde devte, vaddi pindi manukh, choti pindi bhutne, jehre put put suttan rukh. In the cities, you find angels, in big villages, you find human beings, in small villages, you find Bootne (devils), jehre put put suttan rukh. They pick out the trees and bash each other with it. There is something, there is an unfinished project in the villages of India, which we never began. That was the only thing Gandhi perhaps was right about. There is an unfinished project that needs to be taken up. I don’t know who will take it up. But Punjabi villages need now the benefit of all the goodies that Guru Nanak doled out to us. He stormed the citadel of Brahmanism, he raided the treasure and he just gave them all to us. But somehow they have not percolated down to the village level. That’s an unfinished project, not just a Punjab, maybe India.</p>
+                        <p> <b>Rajni Mujral:</b> In terms of style of this composition, is it something that you have sung it as if Qissa Mirza is being sung?</p>
+                        <p> <b>Rabbi Shergill:</b> Perhaps! As a kid growing up in Mukherjee Nagar in Delhi, I am only trying to make sense of Punjabiyat. A lot of Punjabiyat is just sound to me. It’s devoid of context. But at the same time, I wanted to see the Tota (Parrot) as a tragic figure and Mirza is also tragic figure. In some sense, I am the Mirza, I am the Tota (Parrot) in that song. I love my village. The one thing, the lasting regret of the tragic circumstances of my father’s passing away is that my roots were cut off. It’s one of the lasting regrets of my life. I had to give up my land, my eleven acres of land. I was always a city slicker, but I formally became a city slicker. It’s just something I’ve never recovered from. It’s just one of those lasting regrets of my life. In some way, it mirrors the story of Mirza. He’s failed by the ones he loved the most. Tota (parrot) is not killed by or is not captured by his loved ones. But he also is entrapped. So I don’t know, through all of that, I’m talking about my father, I’m talking about myself, I’m talking about this wounded culture that we have, because I can’t imagine that you can ever be happy if you have made your loved ones unhappy. In every Punjabi town, every single Punjabi village, you will find these family disputes having taken an ugly turn. Just so much of tragedy. The tragedy of Punjabi village life is acute. It’s oppressive. To be an outsider and go back and try to reconnect is oppressive. To be a woman is oppressive. To be a Dalit is oppressive. To be poor is oppressive. To be old is oppressive. To be without means is to oppressive. To be a good person is oppressive. This is the condition after the monumental work in civilizing us by the Ten Gurus, of course. I don’t know how to frame it: you go to Amritsar and every time a street fight breaks out, you say, really, are you the same people? Ten Gurus lived maybe twenty kilometres from you, man. This is where? Like we say, if we take God’s name in a place and that place is safe from evil for miles and miles, and say, yeah, really? These are true enlightened masters. This is what’s happening in this place. The tragedy that I saw from my perspective, maybe there’s some. I talk to Punjabis and many Punjabis just don’t agree. They find me just too sentimental, too maudlin. But I can’t help it. It’s just too much that we fight amongst each other. The amount of misery that we heap on each other in friendly fire is way more than what others do to us. That is in a sense also the theme of Totia Manmotia and Mirza.</p>
+                        <p> <b>Rajni Mujral:</b> I’ve also heard about it, not that I’ve had the chance of attending many of your concerts, but many of my friends did. Whenever you perform, and my friends made it a point to bring it to me that you mentioned Heer. There’s always a reference to Heer and there’s always a reference to Waris Shah’s Heer. The idea is that we are talking about a love story, and I’m putting it in the larger context now. When we talk about qissa and we talk about Heer Ranjha, it’s a love story as well. Do you think, in today’s world, is it possible to have a qissa and can it be a romance or a love story? For example, you talk about Totia Manmotia, that’s also sung in the style or let’s say in the way Mirza is sung? One reason is, it is a tragedy. The audience or the person who’s listening to qissa can feel the pain that the performer has gone through or the artist has gone through or the point that he or she is trying to convey. In your case. What do you think, in the modern times, what kind of qissa will it be if there is a qissa rewritten?</p>
+                        <p> <b>Rabbi Shergill:</b> I think, see the qisse, even when you look at Heer Waris Shah as a preamble to the actual story, Waris Shah says, "Yārāṁ sānū aakhī'ā ika kisā hīra nā navā banā'ī'ai jī". He locates the catalyst for writing this epic outside of himself in the society amongst community. The community wants him to come up with this. We don’t have a community. You’re in Toronto. Toronto, is it? You’re in Canada? Yeah! When I was in Canada, I noticed that the greatest tragedy of Canada was the alienation people felt, the disconnection and I read an article about that. Loneliness was epic! I was in Toronto for a concert and it read an article in the newspaper. It specifically spoke about women, how the women of Toronto were really lonely. So, following from that, we live in ways that are asocial and individualistic. We are all living in the shadow of Newton. We have done to our society what it did to hard sciences. He’s reduced us to automatons, to atoms, as opposed to parts of a living functioning whole. We are all lost souls now. Thee qisse that you could find in Heer Waris Shah, which were composed a live functioning society, are not qisse that you will be able to find now in the societies. Because these societies throw up their material. They throw up their own kind of material. I know what that kind of material is. My music is perhaps a reflection of the society I come from. I don’t find any other authentic singer songwriters. In the West, you do.</p>
+                        <p>The great theme that I find coming from great art is loneliness. Everything is about loneliness. It’s a lament. Look at blues. I love the blues. I play the blues. It’s the foundation of pop music in the world right now. And it comes from this great lament. It comes from great loneliness. But you can still find someone around you, even through some passive presence. They are participating. Right now, we are so distracted and we are so consumed in our individual universes that we do not fulfil the precondition for the qisse that you and I are talking about right now. The precondition for those qisse is a society where its constituents are present to each other. We are not present to each other. We are absent to each other. When was the last time you drew up a circle and just gossiped? I can’t remember. I had an important meeting. I couldn’t find a single friend to take with me to that meeting. And I have ten people on my speed dial. It’s not to say I don’t have friends. But the way we are living is counterproductive to the kind of storytelling. Storytelling requires the other. We have I, me, myself now. You just have yourself now. So society has to change to produce qisse of those kinds. But maybe there can be other kinds of qisse because there’s plenty of good poetry also coming out. All poetry is in some way qissa. There is Alex Turner of the Arctic Monkeys. I find his poetry to be very bold. He is a young guy and very bold. That gives you hope. Dylan is still doing his thing. Springsteen is still doing his thing. There’s plenty of storytelling. There’s plenty of poetry that you find in the West. I don’t find that much poetry over here. But every now and then something or the other pops up. I mean we’re a billion people. I wish something happened more regularly, or we produced people of some universal calibre. But it doesn’t. One of the great regrets of my life is the dearth of true authentic poets in Punjabi. Right now, Punjabi is a very self-conscious field. Maybe I’m just a contrarian. I mean, I find myself conscious speaking Punjabi. And you go to Punjab and you find Punjabis are conscious speaking in Punjabi. I’m conscious in the sense that I want to speak good Punjabi. They’re conscious in the sense that they want to speak something else, but they find themselves speaking in Punjabi. It is a highly unconducive atmosphere for poetry and qissakari. We are complex people. We are a self-loathing people. Self-loathing people cannot produce poetry. Poetry is love. Like come back to the same thing again. You’re only going to be able to produce culture, to produce life, if you have love. I think the single precondition for that is speaking your language. Your language, maybe it’s not a mother tongue, maybe it’s something else, but you are speaking it. We live in Delhi; we are five siblings. My eldest sister, poet of great eminence, writes in Hindi. And the Punjabi in me wants to know, why do you write in Hindi? But the Delhite in me says, why do I write in Punjabi? I come from the land of Ghalib and Mir (Poets). Why am I writing in Punjabi? What’s my justification for writing in Punjabi? Those are questions I think about, and I can only say this is love. I love my father. My truth is that the only love I’ve truly known is my father. Every time I’m lost, I go back to him. Through him, I go back to Punjab. I find myself in Punjab. Even if I find myself physically in Delhi, I find myself mentally in Punjab. That is my trapdoor of love. Because I grew up in Delhi where Hindi is second language for everyone, even for those people for whom it’s supposed to be their first language. So in Delhi, Hindi is a second language. We speak it badly. But when you go to maybe Jamia, when you go to Old Delhi, when you go to other of these old places with some Mughal antecedents, then you find maybe somebody speaking with some authentic flavour. So I got my love from Punjabi and you need love to create art. That’s my reason.</p>
+                        <p> <b>Rajni Mujral:</b> I’m just thinking of what you said about Heer Ranjha and your love for poetry. I had an interview with Gurmeet Bawa ma’am, who has sung Mirza in different ways. So there was one incident where she recalls an event. (R.S. Gurmeet Bawa? From Amritsar? R.M. Yes). A week or so before she passed away, we happened to have a conversation over a call. That was supposed to be recorded, but it didn’t materialize. When I met her in Amritsar, she spoke about performing Mirza for a family. The family wanted her to perform qissa Mirza for seven days, the same qissa for seven days. She told me that that was one moment when she realized that if she has to sing the same qissa for seven days, she has to make some improvisation, which means the qissa cannot be the same on each day. There has to be some tweaks, there has to be some changes, there has to be some innovation that she has to do. I have listened to the composition Heer, that is available online, and that you perform and some other singers have performed. So in your case as well, is there any feedback that you get from the audience when you perform live? Do you think that has changed your performance in different ways?</p>
+                        <p> <b>Rabbi Shergill:</b> I am a mutation. So I am a mutation in the sense that I speak about roots culture from Punjab. I come from Delhi. I am a public school-bred, university-educated, English-speaking guy. So, that alienates me from a vast majority of Punjab. They see some resonance with me, but they see also a disconnection with me. When I do my thing, they’re all sitting like they’re receiving high culture. So, they keep quiet in Punjab. In Delhi, we are booers. We just want to sing this song, sing that one, sing a hit, sing that. That’s generally been my experience that most people find me a little inaccessible. I don’t know how to change that. I am who I am. And I think it is important that I exist as myself. Because I think in some ways, I represent the times. I’m trying to not be. For me, being very rootsy would be an artifice. I grew up with the blues. I grew up with Jimi Hendrix. I grew up this guy, and I am so grateful for it. Because Punjabi music for the longest time was just driven to me. I used to call it a dead poet society. If you took away the dead poets, I say it even now, you take away the dead poets and what do you have? Do they have any new classics? You asked me this question. Do we have any new classics? Do we have any new qisse? Where are the new qisse? Do you think we have no story? Do you think there is no pathos? An entire country emigrating to a foreign land. Your water is gone, your topsoil is gone, you’re killing daughters in a frenzy. And there is no story. And still you want to see 48, 27, 48, weight kudi da (reference to a song that talks about a women’s twenty-eight inches’ waistline and forty-seven kg weight). Still you want To go there! It’s like we’re dying and we’re celebrating death. Where is the feistiness? There is nobody fighting. Pop music is not fighting. And if it’s fighting, it’s fighting a very niche war. Okay, Kanwar Grewal is doing all this. Great. Power to him. But it’s not Punjabi culture. It’s farmer culture. It’s not the ecology of Punjab. Ecology of Punjab has no takers. It has no representation in art. Art in Punjab is just not interesting. It’s about privilege. It’s about showing our privilege. Punjabiyat has no representation in its art. There are no Dalit voices. There are no Bhapa (Pejorative term for Sikhs who migrated from Pakistan) voices. There are no Punjabi Hindu voices. There are no Tarkhana (traditional carpenter caste) voices. There is nothing. There is just a boorish ad infinitum assertion of the Jat (dominant community) identity. It’s just boring. There is no nuance. There is no detail. It’s just a constant drone. It’s just a hammer. And I just have no patience for it. I don’t care how much money they make. I don’t care how much privilege they glean for themselves. It is meaningless. We are just having a marriage party in a house that’s in flames. How long does it take for you to realize you’re all living? All the singles who want to immigrate to Canada. All of them have a Canadian passport. They all want one leg there. Everyone who has any means has sent his kids abroad. Every single person! Who is fighting for Punjab. What does it even mean to say you fight for Punjab? Punjab is not its present Euro-modernistic grid. Without saving Punjabi rivers, without saving Punjabi forests, without saving Punjabi flora, fauna, there is no Punjab. I am sorry, but we have a very limited notion. If you’re a Jat Sikh who is single, you’re basically just talking about perpetuating your own culture. You’re not talking about Punjab. Punjab is huge. Look where it’s led us, this blinkered view of Punjabiyat. Look at us. We were a country in 1849 and here we are. Even Himachal doesn’t think they are Punjab. Himachal! You go to Kasauli, they all speak Punjabi. The songs that they sing are in Punjabi. But if you ask, is this Punjab? No, this is pure Hindustan. You look at what we have done to ourselves. It’s the same, I think, and the pop music that we have right now is only an intensification of the same orientation.</p>
+                        <p> <b>Rajni Mujral:</b> Is it possible for you to sing a few lines from qissa Heer or any other qissa that you would want to sing?</p>
+                        <p> <b>Rabbi Shergill:</b> I haven’t even done any vocal riyaz (practice) in the morning. (Singer sings)<br>
+            
+                            Rōja rōja kabara tē ōhu ā'i'ā karē<br>
+                            bāla kē dīvā ōhu mura jā'i'ā karē<br>
+                            nūrāṁ usadā nā para dila dī si'āha<br>
+                            si'āha hī burakā rēśamī pa'i'ā karē<br>
+                            Ākhadē nē vich javānī girīca ōha<br>
+                            nita navā dila māra kē khā'i'ā karē<br>
+                            ākhadē nē vich javānī girīca ōha<br>
+                            nita navā dila māra kē khā'i'ā karē<br>
+                            Kaṭadī ēka rāta ōhī jisa alanē<br>
+                            umara bhara panchī ōha kuralā'i'ā karē<br>
+                            bhūrē bhūrē kēsa tē mukharē dē tila<br>
+                            Sāṛī basatī dēkha lālacā'i'ā karē<br>
+                            badal janḍā rukha havā dā tādon<br>
+                            hekh lammi jad la ke gaya kare<br>
+                            Akhadē nē nauzavāna ēka manchalā<br>
+                            pi'āra pā kē dē gi'ā us nū dhāgā<br>
+                            jakhamī kar kē suta gi'ā nainā dī nīnd<br>
+                            ḍōla kē kite tura gi'ā ghōlī hīnā<br>
+                            de ke hoka vechdi sasti oh saah<br>
+                            fazara dā tārā hai aja tīkana gāvaha<br>
+                            nita navā pataṇa tē nāvī'ana bēdī'ā<br>
+                            nita navē ōhadē badabāna ōhadē malaha<br>
+                            bā'ī ikalī kaṭadī hizarāṁ dē sūta<br>
+                            gāndī rahidī rāta dina yādāṁ dī gaah</p>
+            
+                        <p> <b>Rajni Mujral:</b> I grew up with Batalvi as well. Shiv Kumar Batalvi is my favorite poet as well. The poem that I used to relish the most when I was really young was Āsā tā jōbana rutē maranā (I will die young) and I still can’t get enough of that. Is it possible for you to talk about the qissa that you sang just now for me, Nooran?</p>
+                        <p> <b>Rabbi Shergill:</b> It’s a story of Nooran. She is a little wild character, deviant character even. She can see that Shiv is disapproving of her. But he is also balanced. She is presented as promiscuous. The end of the story is presented as a sort of justification for what happens to promiscuous people. It’s a bit of that. It has some bit of Punjabi mores in it, good or bad. It starts with Rōja<br>
+            
+                            rōja kabara tē ōhu ā'i'ā karē<br>
+                            bāla kē dīvā ōhu mura jā'i'ā karē<br>
+                            nūrāṁ usadā nā para dila dī si'āha<br>
+                            si'āha hī burakā rēśamī pa'i'ā karē<br>
+                            Ākhadē nē vich javānī girīca ōha<br>
+                            nita navā dila māra kē khā'i'ā karē<br></p>
+                        
+                        <p>But we disapprove when she becomes a deviant. That is a theme that you find everywhere. In all our epics, even Ramayana, they don’t like that Sita could paint Ram from memory. We tend to scoff and frown at a woman expressing herself. It’s not the same for the woman. But physiologically, she’s way stronger. In some ways, if it came to a life of promiscuity, then she’s built for it and the man is not. I mean, physiologically, he’s the weaker sex, in that sense. So there is, in this qissa, you find a theme of the limit of masculinity. A man can only do this and no further. What lies beyond that, he’s afraid of that. And what he’s afraid of, he scoffs at and he disapproves of. So, Noora is a sexual deviant.<br>
+            
+                            Kaṭadī ēka rāta ōhī jisa alanē<br>
+                            umara bhara panchī ōha kuralā'i'ā karē<br>
+                            bhūrē bhūrē kēsa tē mukharē dē tila<br>
+                            Sāṛī basatī dēkha lālacā'i'ā karē<br>
+                            badal janḍā rukha havā dā tādon<br>
+                            hekh lammi jad la ke gaya kare<br>
+                            See in India, we have this great idealizing of the woman. I don’t know why. Maybe it’s needed, maybe it’s not.</p>
+            
+                        <p>Shiv Batalvi finds a plot point where she is given her just desserts at the hand of a young lover who does to her what she’s been doing to others. She turns into a rag on the floor after that. After he is done with Nooran, the poet says: <br>
+                            Kabara puṭa kē cita ḍaphanē ga'ē, nāla ḍaphanē ga'ē hajū'āṁ dē hāra,<br> 
+                            akhadē nē aja vī kōha-kāpha tō,<br> 
+                            nauṁ āvē rōza ika parī'āṁ dī dāra.</p>
+            
+                        <p>This staza is about after he is done with handing out her or meeting out her punishment. I find the end very interesting with regard to Punjabi culture. It’s a strange thing in Punjabi. We don’t have a happy folk song. We only have sad folk songs. All the great stories are sad. Challa is sad, Heer is sad, Mirza is sad, everything is sad. And then it talks about how the Punjabi way of looking at world, at cosmos, resolves the limits of perception, of human perception: Akhadē nē sāla kai hudē calē, aja tīka ōha dīvā bālē So now, Nooran becomes, from a real person, a ghost. We don’t know if she’s a ghost or whether she’s a human being, pretty much like that character in a Premchand story.
+            
+                            Akhadē nē sāla kai hudē calē, aja tīka ōha dīvā bālē<br>
+                            Jada kadī vī tēza vagadī hai havā, vica havā mahika jēhī ika rālē<br></p>
+            
+                        <p>There are certain images of Punjabi culture which I find tremendously seductive <br>
+                            Lē kē us ḍive cō boond ēka ṭēla dī,<br> 
+                            yāra dē hōthaa tē hara kō'ī male.<br> 
+                            Rōndē lā kē ṭhasanā ōsa kabara nāla,<br> 
+                            hizara dī lūṇī jinā dē haḍa galē,<br> 
+                            ḍōora ōsa vādī ca ōha ṭibī'āṁ tō pāra,<br> 
+                            nāla mērē jē kō'ī aja vī calē.</p>
+            
+                        <p>Now these vaadis (valleys), these temples, are these real valleys or do they exist in the no man’s land between our physical life and the afterlife?<br> 
+                            Ludchē pā'i aja tīka vī nūrāṁ dī rūha,<br> 
+                            ōdā hī aja taka ōha dīvā bālē.<br> 
+                            Is that a real diva (lamp) or is it a diva that the poet is lighting through the verse in your hearts and mind? The first three-fourths of the poem deals with, the poet expresses his own limited Punjabiyat, good or bad, in very seductive imagery.</p>
+            
+                        <p>At the end, he does more justice to his genius as a poet when he starts talking about the limits of perception and how she’s both something present here and something present over there.</p>
+                        <p>I find that to be an essence. I find that most Punjabi qisse are simply a preparation for the afterlife. You look at Hashim, you look at Pilu, you look at all this other literature also. It’s all a preparation. We are very interior people. There is an interiority in Punjabi culture which is grossly at odds with our extrovert persona. We are supposed to be very extrovert; we are supposed to be very talkative. When you try to engage with the language, there is this crazy interiority in there.</p>
+            
+                        <p> <b>Rajni Mujral:</b> We can pause here. Thank you so much for your time, and thank you so much for your discussion on Qissa.</p>
+				</div>
+				<!-- Episode transcript END -->
+
+				<!-- Share social START -->
+				<div class="border mt-4 py-2 px-3 rounded">
+					<div class="list-group-inline list-unstyled">
+						<h6 class="mt-2 me-4 d-inline-block"><i class="fas fa-share-alt me-2"></i>Share on:</h6>
+						<ul class="list-inline list-unstyled d-inline-block mb-0">
+							<li class="list-inline-item"><a href="#" class="me-3 text-body">Facebook</a></li>
+							<li class="list-inline-item"><a href="#" class="me-3 text-body">Twitter</a></li>
+							<li class="list-inline-item"><a href="#" class="me-3 text-body">Dribble</a></li>
+						</ul>
+					</div>
+				</div>
+				<!-- Share social END -->
+
+				<!-- Next episode START -->
+				<div class="mt-5">
+					<div class="bg-primary bg-opacity-10 rounded p-4 d-flex align-items-center position-relative">
+						<!-- Title -->
+						<div class="me-3">
+							<h5 class="m-0"> <a href="episode-madan-gopal-singh" class="stretched-link btn-link text-reset">Madan Gopal Singh Talks about Qissa Hir Ep.02</a></h5>
+						</div>
+						<!-- Icon -->
+						<div class="ms-auto flex-grow-0">
+							<a href="#!" class="icon-md border border-primary d-block text-primary rounded-circle">
+								<i class="bi bi-play-fill fs-3"></i>
+							</a>
+						</div>
+					</div>
+				</div>
+				<!-- Next episode END -->
+			</div>
+			<!-- Hosted START -->
+			<div class="col-lg-4" style="display: none;">
+				<div class="text-center" data-sticky data-margin-top="80" data-sticky-for="991">
+					<div class="avatar avatar-xxxl">
+						<img class="avatar-img rounded-circle" src="assets/images/rajni-mujral.jpg" alt="avatar">
+					</div>
+					<!-- Host name -->
+					<div class="mt-3">
+						<span>Hosted by </span>
+						<h5>Dr.Rajni Mujral</h5>
+					</div>
+					<!-- Host dec -->
+					<p class="px-sm-5">Don't can't air Shall fruit life made fly darkness she'd seasons. </p>
+					<!-- Host social -->
+					<ul class="nav justify-content-center">
+						<li class="nav-item">
+							<a class="nav-link ps-0 pe-2 fs-5" href="#"><i class="fab fa-facebook-square"></i></a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link px-2 fs-5" href="#"><i class="fab fa-twitter-square"></i></a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link px-2 fs-5" href="#"><i class="fab fa-linkedin"></i></a>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<!-- Hosted START -->
+		</div>
+	</div>
+</section>
+<!-- =======================
+Episode single END -->
+ 
+</main>
+<!-- **************** MAIN CONTENT END **************** -->
+
+<!-- =======================
+Footer START -->
+<footer class="pb-0">
+	<div class="container">
+		<hr>
+		<!-- Widgets START -->
+		<div class="row pt-5">
+			<!-- Footer Widget -->
+			<div class="col-md-6 col-lg-4 mb-4">
+				<img class="light-mode-item" src="assets/images/logo.svg" alt="logo">			
+				<img class="dark-mode-item" src="assets/images/logo-light.svg" alt="logo">
+				<p class="mt-3">The next-generation blog, news, and magazine theme for you to start sharing your stories today! This Bootstrap 5 based theme is ideal for all types of sites that deliver the news.</p>
+				<div class="mt-4">©2024 <a href="https://www.webestica.com/" class="text-reset btn-link" target="_blank">Webestica</a>. All rights reserved
+				</div>
+			</div>
+
+			<!-- Footer Widget -->
+			<div class="col-md-6 col-lg-3 mb-4">
+				<h5 class="mb-4">Navigation</h5>
+				<div class="row">
+					<div class="col-6">
+						<ul class="nav flex-column">
+							<li class="nav-item"><a class="nav-link pt-0" href="#">Features</a></li>
+							<li class="nav-item"><a class="nav-link" href="#">Style Guide</a></li>
+							<li class="nav-item"><a class="nav-link" href="#">Contact us</a></li>
+							<li class="nav-item"><a class="nav-link" href="#">Get Theme</a></li>
+							<li class="nav-item"><a class="nav-link" href="#">Support</a></li>
+						</ul>
+					</div>
+ 					<div class="col-6">
+						<ul class="nav flex-column">
+							<li class="nav-item"><a class="nav-link pt-0" href="#">News</a></li>
+							<li class="nav-item"><a class="nav-link" href="#">Career <span class="badge text-bg-danger ms-2">2 Job</span></a></li>
+							<li class="nav-item"><a class="nav-link" href="#">Technology</a></li>
+							<li class="nav-item"><a class="nav-link" href="#">Startups</a></li>
+							<li class="nav-item"><a class="nav-link" href="#">Gadgets</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+
+			<!-- Footer Widget -->
+			<div class="col-sm-6 col-lg-3 mb-4">
+				<h5 class="mb-4">Browse by Tag</h5>
+				<ul class="list-inline">
+					<li class="list-inline-item"><a href="#" class="btn btn-sm btn-primary-soft">Travel</a></li>
+					<li class="list-inline-item"><a href="#" class="btn btn-sm btn-warning-soft">Business</a></li>
+					<li class="list-inline-item"><a href="#" class="btn btn-sm btn-success-soft">Tech</a></li>
+					<li class="list-inline-item"><a href="#" class="btn btn-sm btn-danger-soft">Gadgets</a></li>
+					<li class="list-inline-item"><a href="#" class="btn btn-sm btn-info-soft">Lifestyle</a></li>
+					<li class="list-inline-item"><a href="#" class="btn btn-sm btn-primary-soft">Vaccine</a></li>
+					<li class="list-inline-item"><a href="#" class="btn btn-sm btn-warning-soft">Marketing</a></li>
+					<li class="list-inline-item"><a href="#" class="btn btn-sm btn-success-soft">Sports</a></li>
+					<li class="list-inline-item"><a href="#" class="btn btn-sm btn-danger-soft">Covid-19</a></li>
+					<li class="list-inline-item"><a href="#" class="btn btn-sm btn-info-soft">Politics</a></li>
+				</ul>
+			</div>
+
+			<!-- Footer Widget -->
+			<div class="col-sm-6 col-lg-2 mb-4">
+				<h5 class="mb-4">Our Social handles</h5>
+				<ul class="nav flex-column">
+					<li class="nav-item"><a class="nav-link pt-0" href="#"><i class="fab fa-facebook-square fa-fw me-2 text-facebook"></i>Facebook</a></li>
+					<li class="nav-item"><a class="nav-link" href="#"><i class="fab fa-twitter-square fa-fw me-2 text-twitter"></i>Twitter</a></li>
+					<li class="nav-item"><a class="nav-link" href="#"><i class="fab fa-linkedin fa-fw me-2 text-linkedin"></i>Linkedin</a></li>
+					<li class="nav-item"><a class="nav-link" href="#"><i class="fab fa-youtube-square fa-fw me-2 text-youtube"></i>YouTube</a></li>
+				</ul>
+			</div>
+		</div>
+		<!-- Widgets END -->
+	</div>
+</footer>
+<!-- =======================
+Footer END -->
+
+<!-- Back to top -->
+<div class="back-top"><i class="bi bi-arrow-up-short"></i></div>
+
+<!-- =======================
+JS libraries, plugins and custom scripts -->
+
+<!-- Bootstrap JS -->
+<script src="assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="assets/vendor/plyr/plyr.js"></script>
+<script src="assets/vendor/sticky-js/sticky.min.js"></script>
+
+<!-- Template Functions -->
+<script src="assets/js/functions.js"></script>
+
+</body>
+
+<!-- Mirrored from blogzine.webestica.com/podcast-single by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 05 Jul 2024 05:57:35 GMT -->
+</html>
